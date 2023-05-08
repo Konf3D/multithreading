@@ -5,15 +5,15 @@
 #include <chrono>
 #include <iomanip>
 template<typename T>
-T calculateSum(const std::vector<T>& v, size_t m) {
-    size_t n = v.size();
+T calculateSum(const std::vector<T>& v, const size_t m) {
+    const size_t n = v.size();
     std::vector<std::thread> threads(m);
     std::vector<T> sums(m);
-    size_t chunkSize = n / m;
+    const size_t chunkSize = n / m;
     for (size_t i = 0; i < m; i++) {
         threads[i] = std::thread([=, &sums]() {
-            size_t start = i * chunkSize;
-            size_t end = (i == m - 1) ? n : (i + 1) * chunkSize;
+            const size_t start = i * chunkSize;
+            const size_t end = (i == m - 1) ? n : (i + 1) * chunkSize;
             sums[i] = std::accumulate(v.begin() + start, v.begin() + end, static_cast<T>(0));
             });
     }
