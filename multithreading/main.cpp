@@ -3,7 +3,6 @@
 #include <thread>
 #include <numeric>
 #include <chrono>
-#include <iomanip>
 template<typename T>
 T calculateSum(const std::vector<T>& v, const size_t m) {
     const size_t n = v.size();
@@ -28,8 +27,6 @@ int main()
     {
         std::cout << "N = " << n << std::endl;
         std::vector<int> v(n);
-
-        // Initialize the vector with random numbers
         for (int i = 0; i < n; ++i) {
             v[i] = rand() % 10000 - 5000;
         }
